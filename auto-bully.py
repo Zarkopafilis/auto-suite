@@ -17,8 +17,8 @@ out = subprocess.check_output("iwconfig " + interface + " mode monitor", shell=T
 print "Bringing " + interface + "up"
 out = subprocess.check_output("ifconfig " + interface + " up", shell=True)
 print "All good"
-x = raw_input("Start airodump-ng > ")
-cmd = "airodump-ng " + interface
+x = raw_input("Start wash > ")
+cmd = "wash -i " + interface + " -C"
 print "> " + cmd
 subprocess.check_output("gnome-terminal -x sh -c '" + cmd + "; exec bash'" , shell=True)
 bssid = raw_input("Enter BSSID > ")
