@@ -1,7 +1,6 @@
 import subprocess
-import time
 
-print "Automation tool for air*-ng (deauth) suite by Zarkopafilis"
+print "Automation tool for air*-ng (targeted deauth) suite by Zarkopafilis"
 print ""
 print "> ifconfig"
 out = subprocess.check_output("ifconfig")

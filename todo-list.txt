@@ -4,7 +4,6 @@ Wireless AP hacking tools:
   cowpatty
   evil-twin (didn't decide tool(s) yet)
   ICMPTX
-  Continuous Deauth attack (without random sleep overhead)
 Post-AP hack tools:
   automate the nmap scans
   my version of db_autopwn(*)/just check what works (opt)

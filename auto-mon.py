@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import subprocess
 
 print "Automation tool to set interface to monitor mode by Zarkopafilis"

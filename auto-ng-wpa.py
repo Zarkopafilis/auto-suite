@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import subprocess
 
 print "Automation tool for air*-ng (WPA) suite by Zarkopafilis"
